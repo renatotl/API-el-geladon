@@ -1,0 +1,315 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API El Geladon",
+      "description": "API para CRUD de paletas mexicanas e carrinho de compras",
+      "termsOfService": "",
+      "contact": {
+        "email": "github.com/renatotl"
+      },
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/paletas",
+        "description": "API de teste"
+      },
+      {
+        "url": "https://api-elgeladon.herokuapp.com/paletas",
+        "description": "API de produção"
+      }
+    ],
+    "paths": {
+      "/all-paletas": {
+        "get": {
+          "summary": "Lista de todas as paletas",
+          "description": "Rota responsável por listar todas as paletas",
+          "tags": ["Paletas"],
+          "responses": {
+            "404": {
+              "description": "Not Found"
+            },
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Paletas"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/one-paleta/{id}": {
+        "get": {
+          "summary": "Busca uma paleta pelo ID",
+          "description": "Rota responsável por buscar uma paleta pelo ID",
+          "tags": ["Paletas"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da paleta para a busca",
+              "required": true
+            }
+          ],
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Paletas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/create-paleta": {
+        "post": {
+          "summary": "Cadastrar uma paleta",
+          "description": "Rota responsável por cadastrar uma paleta",
+          "tags": ["Paletas"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paletas"
+                },
+                "examples": {
+                  "Paletas": {
+                    "value": {
+                      "sabor": "Maracuja",
+                      "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+                      "foto": "./assets/images/maracuja.png",
+                      "preco": 4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Paletas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/update-paleta/{id}": {
+        "put": {
+          "summary": "Editar uma paleta pelo ID",
+          "description": "Rota responsável por editar uma paleta pelo ID",
+          "tags": ["Paletas"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da paleta para a busca",
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paletas"
+                },
+                "examples": {
+                  "Paletas": {
+                    "value": {
+                      "sabor": "Limão Editado",
+                      "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+                      "foto": "./assets/images/limao.png",
+                      "preco": 7
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Paletas"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/delete-paleta/{id}": {
+        "delete": {
+          "summary": "Apagar uma paleta pelo ID",
+          "description": "Rota responsável por apagar uma paleta pelo ID",
+          "tags": ["Paletas"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Id da paleta para deleção",
+              "required": true
+            }
+          ],
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/all-carrinho": {
+        "get": {
+          "summary": "Lista de todos os itens do carrinho",
+          "description": "Rota responsável por listar todos os itens do carrinho",
+          "tags": ["Carrinho"],
+          "responses": {
+            "404": {
+              "description": "Not Found"
+            },
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Carrinho"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/create-carrinho": {
+        "post": {
+          "summary": "Cadastrar vários itens no carrinho",
+          "description": "Rota responsável por cadastrar vários itens no carrinho",
+          "tags": ["Carrinho"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Carrinho"
+                },
+                "examples": {
+                  "Carrinho": {
+                    "value": [
+                      {
+                        "paletaId": "624230fdcd38269205c82197",
+                        "quantidade": 5
+                      },
+                      {
+                        "paletaId": "62423c1e618f4a4738a5ee75",
+                        "quantidade": 2
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400": {
+              "description": "Bad Request"
+            },
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Carrinho"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/finish-carrinho": {
+          "delete": {
+            "summary": "Apagar todos os itens do carrinho",
+            "description": "Rota responsável por apagar todos os itens do carrinho",
+            "tags": ["Carrinho"],
+            "responses": {
+              "400": {
+                "description": "Bad Request"
+              },
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        }
+    },
+    "components": {
+      "schemas": {
+        "Paletas": {
+          "type": "object",
+          "properties": {
+            "sabor": {
+              "type": "string"
+            },
+            "descricao": {
+              "type": "string"
+            },
+            "foto": {
+              "type": "string"
+            },
+            "preco": {
+              "type": "number"
+            }
+          }
+        },
+        "Carrinho": {
+          "type": "object",
+          "properties": {
+            "paletaId": {
+              "type": "string"
+            },
+            "quantidade": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
