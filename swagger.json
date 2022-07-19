@@ -15,7 +15,7 @@
         "description": "API de teste"
       },
       {
-        "url": "https://api-elgeladon.herokuapp.com/paletas",
+        "url": "https://nova-api-elgeladon.herokuapp.com/paletas",
         "description": "API de produção"
       }
     ],
@@ -45,7 +45,7 @@
           }
         }
       },
-      "/one-paleta/{id}": {
+      "/paleta/{id}": {
         "get": {
           "summary": "Busca uma paleta pelo ID",
           "description": "Rota responsável por buscar uma paleta pelo ID",
@@ -168,7 +168,7 @@
           }
         }
       },
-      "/delete-paleta/{id}": {
+      "/delete/{id}": {
         "delete": {
           "summary": "Apagar uma paleta pelo ID",
           "description": "Rota responsável por apagar uma paleta pelo ID",

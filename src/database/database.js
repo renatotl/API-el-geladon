@@ -3,13 +3,13 @@ const mongoose = require('mongoose');// criamos a constante mongoose e e usamos 
 const connectToDatabase = () => {// estabelece a conexão com o mogodb
 
     // nos não acessamos atravez de http, mas sim pelo mongodb por isso o //
-    mongoose.connect('mongodb://localhost:27017/paletas-bd', { 
+    mongoose.connect(process.env.URI_DATABASE, { //VARIÁVEL DE AMBIENTE
     useNewUrlParser: true,//Para que o Moongoose use o novo sistema de URL
     useUnifiedTopology: true,//Mecanismo de monitoramento de Banco de Dados
     // esses códigos impedem que dé mal funcionamento com o caminho localhost27017
 })//passando o endereço do nosso mongoDb
     .then(() => 
-        console.log('MONGO DB CONECTADO')
+        console.log('MONGO ATLAS CONECTADO')
       )
       .catch((err) => 
          console.log(`Erro na conexao com o banco: ${err}`)
@@ -60,3 +60,5 @@ module.exports = connectToDatabase;
 // 45 trazer para a nossa route const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = require('../../swagger.json');
 // atualizamos o arquivo swagger.json, na linha 18 é necessario colar o link do projeto já no heroku e será criar um PATH diferente para cada rota que tivermos
+
+// mogodb atlas e back end no heroku

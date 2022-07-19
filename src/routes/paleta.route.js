@@ -1,15 +1,16 @@
 const express = require('express');
 const route = express.Router();
-
-const paletasController = require('../controllers/paleta.controler');
-const { validId, validObjectBody } = require('../middlewares/paleta.middleware');
-// const { validId, validObjectBody } chamamos isso de DESCONSTRUÇÃO DE OBJETO
 const swaggerUi = require('swagger-ui-express');// pegando os arquivos do swahher para nossa constant swaggerUi
 const swaggerDocument = require('../../swagger.json');
 
 
-route.use('/api-docs', swaggerUi.serve);
-route.get('/api-docs', swaggerUi.setup(swaggerDocument));
+const paletasController = require('../controllers/paleta.controler');
+const { validId, validObjectBody } = require('../middlewares/paleta.middleware');
+// const { validId, validObjectBody } chamamos isso de DESCONSTRUÇÃO DE OBJETO
+
+
+route.use('/api-docs', swaggerUi.serve);// rota da aplicação
+route.get('/api-docs', swaggerUi.setup(swaggerDocument));// nooso swaggerdocument
 
 
 // O VALIDID vsai ser se está tudo certo caso o contrário ele nem entra em controller

@@ -1,11 +1,11 @@
+require('dotenv').config();// importando dotenv
 const express = require('express');
 const cors =require('cors');
-const port = 3000;
 const app = express();
 const route = require('./src/routes/paleta.route');
 const connectToDatabase = require('./src/database/database');
 
-
+const port = process.env.PORT || 3000;//acessa ou a porta 3000 ou o process.env
 
 connectToDatabase()
 app.use(express.json());// tranforma todas as REQ e RES em json 
@@ -57,11 +57,10 @@ app.use(cors());
   //   res.send(escolhaPaleta);
   // });
 
+
 app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Servidor rodando na porta ${port}`);// porta que pode ser a porta do sistema ou 3000
 });
-
-
 
 /* CONFIGURAÕES BÁSICAS DO INDEX.JS
 const express = require('express');
