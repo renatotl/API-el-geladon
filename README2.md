@@ -45,7 +45,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Paletas"<!-- $ref = reerencia-->
-                  }
+                  }<!--se refere a coments no final desse codigo-->
                 }
               }
             }
@@ -53,11 +53,11 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
         }
       }
     },
-    "/paleta/{id}": {
+    "/paleta/{id}": {<!-- o nnome tem que está igual no arqiovo routes -->
       "get": {
         "summary": "Busca uma paleta pelo ID",
         "description": "Rota responsável por buscar uma paleta pelo ID",
-        "tags": ["Paletas"],
+        "tags": ["Paletas"],<!--Essa TAG é apenas um nome que aparecená quando renderizarmos o SWAGGER -->
         "parameters": [
           {
             "name": "id",
@@ -76,7 +76,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
               "application/json": {
                 "schema": {
                   "type": "object",<!-- já que ele retorna uma paleta o type é object -->
-                  "$ref": "#/components/schemas/Paletas"<!-- termos direto as referencias -->
+                  "$ref": "#/components/schemas/Paletas"<!--se refere a coments no final desse codigo-->
                 }
               }
             }
@@ -84,7 +84,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
         }
       }
     },
-    "/create-paleta": {
+    "/create-paleta": {<!-- o nnome tem que está igual no arqiovo routes -->
       "post": {
         "summary": "Cadastrar uma paleta",
         "description": "Rota responsável por cadastrar uma paleta",
@@ -93,7 +93,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Paletas"
+                "$ref": "#/components/schemas/Paletas"<!--se refere a components no final desse codigo-->
               },
               "examples": {
                 "Paletas": {
@@ -118,7 +118,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Paletas"
+                  "$ref": "#/components/schemas/Paletas"<!--se refere a coments no final desse codigo-->
                 }
               }
             }
@@ -126,7 +126,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
         }
       }
     },
-    "/update-paleta/{id}": {
+    "/update-paleta/{id}": {<!-- o nnome tem que está igual no arqiovo routes -->
       "put": {
         "summary": "Editar uma paleta pelo ID",
         "description": "Rota responsável por editar uma paleta pelo ID",
@@ -143,7 +143,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Paletas"
+                "$ref": "#/components/schemas/Paletas"<!--se refere a components no final desse codigo-->
               },
               "examples": {
                 "Paletas": {
@@ -168,7 +168,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/Paletas"
+                  "$ref": "#/components/schemas/Paletas"<!--se refere a components no final desse codigo-->
                 }
               }
             }
@@ -176,7 +176,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
         }
       }
     },
-    "/delete-paleta/{id}": {
+    "/delete/{id}": {<!-- o nnome tem que está igual no arqiovo routes -->
       "delete": {
         "summary": "Apagar uma paleta pelo ID",
         "description": "Rota responsável por apagar uma paleta pelo ID",
@@ -215,7 +215,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Carrinho"
+                    "$ref": "#/components/schemas/Carrinho"<!--se refere a components no final desse codigo-->
                   }
                 }
               }
@@ -263,7 +263,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Carrinho"
+                    "$ref": "#/components/schemas/Carrinho"<!--se refere a components no final desse codigo-->
                   }
                 }
               }
@@ -290,7 +290,7 @@ README2 feito por mim. Este readem tem os mesmo arquivos do swagger.json mas com
   },
   "components": {<!--é um objeto -->
     "schemas": {
-      "Paletas": {
+      "Paletas": {<!-- o ref das linhas de cima está puchando este cara-->
         "type": "object",
         "properties": {<!-- os campos do nosso banco, sabor, descricao etc -->
           "sabor": {

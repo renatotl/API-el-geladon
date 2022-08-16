@@ -1,11 +1,11 @@
 require('dotenv').config();// importando dotenv
-const express = require('express');
+const express = require('express');// trazendo o express
 const cors =require('cors');
 const app = express();
 const route = require('./src/routes/paleta.route');
 const connectToDatabase = require('./src/database/database');
 
-const port = process.env.PORT || 3000;//acessa ou a porta 3000 ou o process.env
+const port = process.env.PORT || 3000;//acessa ou a porta 3000 ou o process.env já no forma padronizada do deploy. caso seja necessário alterar a porta para 3001
 
 connectToDatabase()
 app.use(express.json());// tranforma todas as REQ e RES em json 
